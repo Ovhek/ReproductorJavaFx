@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Cole
  */
-public class Layout_leftController implements Initializable {
+public class LayoutCenterController extends Controller implements Initializable {
 
     /**
      * Initializes the controller class.

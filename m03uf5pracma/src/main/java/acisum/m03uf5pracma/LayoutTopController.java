@@ -8,13 +8,15 @@ package acisum.m03uf5pracma;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
  * @author Cole
  */
-public class Layout_rightController implements Initializable {
+public class LayoutTopController extends Controller implements Initializable {
 
     /**
      * Initializes the controller class.

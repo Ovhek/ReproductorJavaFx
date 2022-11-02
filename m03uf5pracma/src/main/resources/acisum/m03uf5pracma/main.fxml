@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.MainController">
    <top>
-      <AnchorPane id="menu_top" fx:id="menu_top" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <fx:include fx:id="layoutTop" source="layoutTop.fxml" />
    </top>
    <left>
-      <AnchorPane id="left_menu" fx:id="left_menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <fx:include fx:id="layoutLeft" source="layoutLeft.fxml" />
    </left>
    <center>
-      <AnchorPane id="center_menu" fx:id="center_menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <fx:include fx:id="layoutCenter" source="layoutCenter.fxml" />
    </center>
    <bottom>
-      <AnchorPane id="bottom_menu" fx:id="bottom_menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <fx:include fx:id="layoutBottom" source="layoutBottom.fxml" />
    </bottom>
 </BorderPane>
