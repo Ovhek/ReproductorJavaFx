@@ -4,7 +4,4 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" fx:id="layout_top" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="acisum.m03uf5pracma.LayoutTopController">
-    <stylesheets>
-        <URL value="@/styles/layout_right.css" />
-    </stylesheets>
 </AnchorPane>
