@@ -58,6 +58,8 @@ public class LayoutBottomController extends Controller implements Initializable 
         try {
             String path = Utils.getMp3Path(this, "A");
             mediaPlayer = Utils.getMediaPlayer(path);
+            //String path = Utils.getMp3Path(this, "A");
+            //mediaPlayer = Utils.getMediaPlayer(path);
         } catch (MediaException e) {
             System.out.println("AAAA");
         }
