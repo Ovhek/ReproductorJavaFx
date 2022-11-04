@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.MainController">
+<BorderPane maxHeight="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.MainController">
    <top>
       <fx:include fx:id="layoutTop" source="layoutTop.fxml" BorderPane.alignment="TOP_LEFT" />
+      <fx:include fx:id="layoutTop" prefHeight="0.0" prefWidth="0.0" source="layoutTop.fxml" />
    </top>
    <left>
-      <fx:include fx:id="layoutLeft" source="layoutLeft.fxml" />
+      <fx:include fx:id="layoutLeft" prefHeight="0.0" prefWidth="0.0" source="layoutLeft.fxml" />
    </left>
    <center>
-      <fx:include fx:id="layoutCenter" source="layoutCenter.fxml" />
+      <fx:include fx:id="layoutCenter" source="layoutCenter.fxml" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <fx:include fx:id="layoutBottom" source="layoutBottom.fxml" />
+      <fx:include fx:id="layoutBottom" prefHeight="0.0" prefWidth="0.0" source="layoutBottom.fxml" />
    </bottom>
 </BorderPane>

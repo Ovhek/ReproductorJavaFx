@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.LayoutCenterController">
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.LayoutCenterController">
+    <stylesheets>
+        <URL value="@/styles/layout_center.css" />
+    </stylesheets>
+   <children>
+      <VBox>
+         <children>
+            <ToolBar nodeOrientation="RIGHT_TO_LEFT">
+              <items>
+                  <Button fx:id="btnSortMP3" focusTraversable="false" mnemonicParsing="false">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="sortIcon" glyphName="" text="" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnDeleteMP3" focusTraversable="false" mnemonicParsing="false">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="deleteIcon" glyphName="TRASH" />
+                     </graphic>
+                  </Button>
+                <Button fx:id="btnAddMP3" focusTraversable="false" mnemonicParsing="false">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="addIcon" glyphName="" text="" />
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="textfSearch" />
+                  <Label fx:id="labListTitle" text="Titulo Lista" />
+              </items>
+            </ToolBar>
+            <ListView fx:id="lvMP3" />
+         </children>
+      </VBox>
+   </children>
     
 </AnchorPane>
