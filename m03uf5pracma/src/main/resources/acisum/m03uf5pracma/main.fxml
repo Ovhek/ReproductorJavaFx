@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.MainController">
    <top>
+      <fx:include fx:id="layoutTop" source="layoutTop.fxml" BorderPane.alignment="TOP_LEFT" />
       <fx:include fx:id="layoutTop" prefHeight="0.0" prefWidth="0.0" source="layoutTop.fxml" />
    </top>
    <left>
