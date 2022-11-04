@@ -22,8 +22,8 @@ public abstract class Utils {
     
     public static String getMp3Path(Object instance, String songName)
     {
-        var test = instance.getClass().getClassLoader().getResource("sounds/");
+        var test = instance.getClass().getClassLoader().getResource("data/");
         
-        return instance.getClass().getClassLoader().getResource("sounds/"+songName+".mp3").toString();
+        return instance.getClass().getClassLoader().getResource("data/"+songName+".mp3").toString();
     }
 }
