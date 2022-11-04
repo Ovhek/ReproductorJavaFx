@@ -16,13 +16,13 @@
          <children>
             <HBox prefHeight="48.0" prefWidth="580.0">
                <children>
-                  <Slider id="music_progress" fx:id="playerSlider" prefHeight="57.0" prefWidth="547.0" showTickMarks="true" />
+                  <Slider id="music_progress" fx:id="playerSlider" blockIncrement="1.0" onDragDetected="#mouseDragDetectedPlayerSlider" onDragDone="#mouseDragDonePlayerSlider" onMousePressed="#mousePressedPlayerSlider" prefHeight="57.0" prefWidth="547.0" />
                   <Label fx:id="playerTime" alignment="CENTER" prefHeight="37.0" prefWidth="28.0" text="Label" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="58.0" prefWidth="580.0">
                <children>
-                  <Button fx:id="playerShuffleMode" mnemonicParsing="false">
+                  <Button fx:id="playerShuffleMode" mnemonicParsing="false" onAction="#actionPlayerShuffleMode">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -30,15 +30,15 @@
                         <FontAwesomeIconView glyphName="" text="" />
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="playerStop" mnemonicParsing="false" onAction="#actionPlayerStop">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                      <graphic>
-                        <FontAwesomeIconView fx:id="playerStop" text="" />
+                        <FontAwesomeIconView text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerBackward" mnemonicParsing="false">
+                  <Button fx:id="playerBackward" mnemonicParsing="false" onAction="#actionPlayerBackward">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -46,15 +46,15 @@
                         <FontAwesomeIconView text="" />
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="playerPlayPause" mnemonicParsing="false" onAction="#actionPlayerPlayPause">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                      <graphic>
-                        <FontAwesomeIconView fx:id="playerPlayPause" text="" />
+                        <FontAwesomeIconView text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerForward" mnemonicParsing="false">
+                  <Button fx:id="playerForward" mnemonicParsing="false" onAction="#actionPlayerForward">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -62,15 +62,15 @@
                         <FontAwesomeIconView glyphName="" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerMuteUnMute" mnemonicParsing="false">
+                  <Button fx:id="playerMuteUnMute" mnemonicParsing="false" onAction="#actionPlayerMuteUnMute">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                      <graphic>
-                        <FontAwesomeIconView fx:id="PlayerMuteUnMute" text="" />
+                        <FontAwesomeIconView text="" />
                      </graphic>
                   </Button>
-                  <Slider fx:id="playerVolume" showTickMarks="true">
+                  <Slider fx:id="playerVolume" onDragDetected="#mouseDragDetectedPlayerVolume" onDragDone="#mouseDragDonePlayerVolume" onMousePressed="#mousePressedPlayerVolume" showTickMarks="true">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
