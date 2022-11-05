@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.text.Font;
 
 /**
  * JavaFX App
@@ -19,6 +20,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("main"));
         stage.setScene(scene);
+        stage.setMinHeight(350);
+        stage.setMinWidth(500);
         stage.show();
     }
 

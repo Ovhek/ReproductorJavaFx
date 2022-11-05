@@ -1,6 +1,16 @@
 /*
- * Empty Stylesheet file.
- */
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 5 nov 2022, 9:43:38
+    Author     : Cole
+*/
+
+.shadow{
+    -fx-effect: dropshadow(gaussian, #333, 10, 0.5, 0, 0);
+    -fx-padding: 10px
+}
 .toolbarStyle {
     -fx-background-color: #282828;
 }
@@ -11,6 +21,7 @@
 .hbox .textfield{
     -fx-background-color: #F5F5F5;
 }
+
 
 .toolbarStyle .buttonStyle{
     -fx-background-color: #DBDBDB;
