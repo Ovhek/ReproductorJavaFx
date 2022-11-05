@@ -1,0 +1,6 @@
+.root{
+    -fx-background-color: #121212;
+}
+.shadow{
+    -fx-effect: dropshadow(gaussian, #333, 10, 0.5, 0, 0);
+}

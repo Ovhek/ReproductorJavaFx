@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="layout_top" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="acisum.m03uf5pracma.LayoutTopController">
+<AnchorPane id="AnchorPane" fx:id="layout_top" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="AnchorPane" stylesheets="@../../styles/layout_top.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.LayoutTopController">
+    <children>
+      <MenuBar fx:id="menu_top" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-color: #000;" styleClass="MenuBar" stylesheets="@../../styles/layout_top.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu fx:id="menu_top_import" mnemonicParsing="false" styleClass="Clickable" text="Import" />
+          <Menu fx:id="menu_top_export" mnemonicParsing="false" styleClass="Clickable" text="Export" />
+          <Menu mnemonicParsing="false" styleClass="Clickable" text="Language">
+            <items>
+              <MenuItem fx:id="menu_top_language_english" mnemonicParsing="false" styleClass="Clickable" text="English" />
+                  <MenuItem fx:id="menu_top_language_spanish" mnemonicParsing="false" styleClass="Clickable" text="Spanish" />
+                  <MenuItem fx:id="menu_top_language_catalan" mnemonicParsing="false" styleClass="Clickable" text="Catalan" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
 </AnchorPane>

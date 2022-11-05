@@ -22,7 +22,7 @@ import javafx.scene.control.ListView;
  */
 public class LayoutLeftController extends Controller implements Initializable {
 
-    ObservableList<String> elements = FXCollections.observableArrayList();
+    //ObservableList<String> elements = FXCollections.observableArrayList();
 
     @FXML
     private ListView<String> lv_playlists;
@@ -38,18 +38,18 @@ public class LayoutLeftController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         /*Con el setItems lo que hacemos es que los elementos que añadamos
         se pondran directamente en nuestro listView*/
-        lv_playlists.setItems(elements);
+        //lv_playlists.setItems(elements);
 
         /*Declaramos un listener que sera el que detectara cuando seleccionemos en alguna playlist*/
-        lv_playlists.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+        /*lv_playlists.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
 
             //activar el botó "eliminar" per si l'usuari el vol eliminar
             btn_delete_playlist.setDisable(false);
 
-        });
+        });*/
     }
 
     private void onActionBtnAdd(ActionEvent event) {
