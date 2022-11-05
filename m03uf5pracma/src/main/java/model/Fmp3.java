@@ -9,44 +9,49 @@ package model;
  * @author joseb
  */
 public class Fmp3 {
-    
-    
-    
     //Atributos
     private String title;
-    private String root;
+    private String artist;
+    private String releaseDate;
+    private String path;
     
-    //Constructores
-    public Fmp3(String title, String root) {
+    public Fmp3(String title, String artist, String releaseDate, String path) {
         this.title = title;
-        this.root = root;
-    }
-    //Metodos
-
-    @Override
-    public String toString() {
-        return "Fmp3{" + "title=" + title + ", root=" + root + '}';
+        this.artist = artist;
+        this.releaseDate = releaseDate;
+        this.path = path;
     }
     
-    
-    
-    //Gets and Sets
     public String getTitle() {
         return title;
-    }
-
-    public String getRoot() {
-        return root;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setRoot(String root) {
-        this.root = root;
+    public String getArtist() {
+        return artist;
     }
-    
-    
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
     
 }

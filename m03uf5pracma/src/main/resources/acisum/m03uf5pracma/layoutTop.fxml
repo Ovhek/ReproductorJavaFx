@@ -11,11 +11,11 @@
         <menus>
           <Menu fx:id="menu_top_import" mnemonicParsing="false" styleClass="Clickable" text="Import" />
           <Menu fx:id="menu_top_export" mnemonicParsing="false" styleClass="Clickable" text="Export" />
-          <Menu mnemonicParsing="false" styleClass="Clickable" text="Language">
+          <Menu fx:id="menu_top_languages" mnemonicParsing="false" styleClass="Clickable" text="Language">
             <items>
-              <MenuItem fx:id="menu_top_language_english" mnemonicParsing="false" styleClass="Clickable" text="English" />
-                  <MenuItem fx:id="menu_top_language_spanish" mnemonicParsing="false" styleClass="Clickable" text="Spanish" />
-                  <MenuItem fx:id="menu_top_language_catalan" mnemonicParsing="false" styleClass="Clickable" text="Catalan" />
+              <MenuItem fx:id="menu_top_language_english" mnemonicParsing="false" onAction="#languageEnglish" styleClass="Clickable" text="English" />
+                  <MenuItem fx:id="menu_top_language_spanish" mnemonicParsing="false" onAction="#languageSpanish" styleClass="Clickable" text="Spanish" />
+                  <MenuItem fx:id="menu_top_language_catalan" mnemonicParsing="false" onAction="#languageCatalan" styleClass="Clickable" text="Catalan" />
             </items>
           </Menu>
         </menus>

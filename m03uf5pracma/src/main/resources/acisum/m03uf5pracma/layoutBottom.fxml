@@ -14,17 +14,22 @@
 <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="mainFxmlClass" stylesheets="@../../styles/layout_bottom.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.LayoutBottomController">
 
    <children>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0">
          <children>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
+                  <Label fx:id="playerTimeCurrent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" styleClass="timeLabel" text="00:00" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
                   <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                      <children>
                         <ProgressBar fx:id="playerSliderProgress" maxWidth="1.7976931348623157E308" progress="0.0" styleClass="progressBarStyle" StackPane.alignment="CENTER" />
-                        <Slider id="music_progress" fx:id="playerSliderSlider" blockIncrement="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onDragDetected="#mouseDragDetectedPlayerSlider" onDragDone="#mouseDragDonePlayerSlider" onMousePressed="#mousePressedPlayerSlider" styleClass="sliderStyle" />
+                        <Slider id="music_progress" fx:id="playerSliderSlider" blockIncrement="1.0" onDragDetected="#mouseDragDetectedPlayerSlider" onDragDone="#mouseDragDonePlayerSlider" onMousePressed="#mousePressedPlayerSlider" styleClass="sliderStyle" />
                      </children>
                   </StackPane>
-                  <Label fx:id="playerTime" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="timeLabel" text="Label" textFill="WHITE">
+                  <Label fx:id="playerTimeLeft" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" styleClass="timeLabel" text="00:00" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Label>
@@ -35,7 +40,7 @@
             </HBox>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="playerShuffleMode" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerShuffleMode">
+                  <Button fx:id="playerShuffleMode" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerShuffleMode" prefHeight="35.0" prefWidth="35.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -43,7 +48,7 @@
                         <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerStop" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerStop">
+                  <Button fx:id="playerStop" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerStop" prefHeight="35.0" prefWidth="35.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -51,7 +56,7 @@
                         <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerBackward" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerBackward">
+                  <Button fx:id="playerBackward" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerBackward" prefHeight="35.0" prefWidth="35.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -59,15 +64,15 @@
                         <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerPlayPause" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerPlayPause">
+                  <Button fx:id="playerPlayPause" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerPlayPause" prefHeight="50.0" prefWidth="50.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                      <graphic>
-                        <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
+                        <Glyph fx:id="playPauseGlyph" fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerForward" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerForward">
+                  <Button fx:id="playerForward" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerForward" prefHeight="35.0" prefWidth="35.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -75,12 +80,12 @@
                         <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playerMuteUnMute" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerMuteUnMute">
+                  <Button fx:id="playerMuteUnMute" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionPlayerMuteUnMute" prefHeight="35.0" prefWidth="35.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                      <graphic>
-                        <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
+                        <Glyph fx:id="muteUnMuteGlyph" fontFamily="FontAwesome" maxWidth="10.0" prefHeight="10.0" styleClass="glyphStyle" text="" />
                      </graphic>
                   </Button>
                   <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
@@ -92,7 +97,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </StackPane>
-                  <Button fx:id="playerLoop" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false">
+                  <Button fx:id="playerLoop" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

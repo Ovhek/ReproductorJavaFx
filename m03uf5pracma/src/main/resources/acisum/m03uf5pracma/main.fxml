@@ -27,8 +27,8 @@
        </AnchorPane>
    </center>
    <bottom>
-       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../styles/layout_bottom.css" BorderPane.alignment="CENTER">
-           <fx:include fx:id="layoutBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="layoutBottom.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+       <AnchorPane stylesheets="@../../styles/layout_bottom.css" BorderPane.alignment="CENTER">
+           <fx:include fx:id="layoutBottom" source="layoutBottom.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
        </AnchorPane>
    </bottom>
    <left>

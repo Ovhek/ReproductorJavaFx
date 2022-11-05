@@ -20,7 +20,7 @@
                <items>
                   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="257.0" styleClass="hboxStyle">
                      <children>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="labelStyle" text="List of Playlists">
+                        <Label fx:id="txt_iv_playlist" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="labelStyle" text="Title of Playlist">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>

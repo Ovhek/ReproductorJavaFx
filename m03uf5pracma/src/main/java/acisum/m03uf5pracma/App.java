@@ -22,6 +22,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setMinHeight(350);
         stage.setMinWidth(500);
+        stage.setTitle("Acisum MP3 Player");
         stage.show();
     }
 
