@@ -53,13 +53,20 @@ public class MainController extends Controller implements Initializable {
         layoutBottomController.setControllers(controllers);
         
         layoutMain.widthProperty().addListener((ov,oldVal, newVal) ->{
-            if (newVal.intValue() < 600){
-                responsiveVbox.getChildren().add(layoutLeft);
+            try{
+                if (newVal.intValue() < 600){
+                    layoutMain.setLeft(null);
+                    responsiveVbox.getChildren().add(layoutLeft);
+                }
+                else{
+                    responsiveVbox.getChildren().remove(layoutLeft);
+                    layoutMain.setLeft(layoutLeft);
+                }
+            } catch (Exception e){
+                //Este error se produce por hijos duplicados pero no afecta en si a la aplicación
+                System.out.println("Error: " + e.getMessage());
             }
-            else{
-                layoutMain.setLeft(layoutLeft);
-                layoutLeft.setTopAnchor(layoutLeft, 100.0);
-            }
+
         });
     }    
 }

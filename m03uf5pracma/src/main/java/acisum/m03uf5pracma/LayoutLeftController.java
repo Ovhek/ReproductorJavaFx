@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 /**
@@ -23,6 +24,9 @@ import javafx.scene.control.ListView;
 public class LayoutLeftController extends Controller implements Initializable {
 
     //ObservableList<String> elements = FXCollections.observableArrayList();
+
+    @FXML
+    public Label txt_iv_playlist;
 
     @FXML
     private ListView<String> lv_playlists;
@@ -36,6 +40,9 @@ public class LayoutLeftController extends Controller implements Initializable {
     @FXML
     private Button btn_filter_playlist;
 
+    private Label getTxtIvPlaylist (){
+        return txt_iv_playlist;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
