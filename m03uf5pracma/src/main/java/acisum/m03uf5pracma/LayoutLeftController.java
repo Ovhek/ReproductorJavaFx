@@ -62,6 +62,8 @@ public class LayoutLeftController extends Controller implements Initializable {
         return txt_iv_playlist;
     }
 
+    private Languages lang = Languages.ENGLISH;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -97,6 +99,8 @@ public class LayoutLeftController extends Controller implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            LayoutTopController layout_top = (LayoutTopController)(controllers.get("LayoutTopController"));
+            stage.setTitle(layout_top.appBundle.getString("add_playlist_title"));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();

@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Fmp3;
 import model.PlayList;
@@ -26,6 +27,8 @@ import model.PlayList;
  */
 public class LayoutLeftPopUpController implements Initializable {
 
+    @FXML
+    private AnchorPane newPlaylistPopUp;
     @FXML
     private TextField txt_nombre_lista;
 
@@ -68,12 +71,6 @@ public class LayoutLeftPopUpController implements Initializable {
             if (!containsName(listas,n.getNombreLista())) {
 
                 this.nombre = n;
-
-               /* Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setTitle("Informacion");
-                alert.setContentText("Se ha añadido correctamente");
-                alert.showAndWait();*/
 
                 // Cerrar ventana
                 Stage stage = (Stage) this.btn_guardar.getScene().getWindow();
