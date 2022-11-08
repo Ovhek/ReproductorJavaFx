@@ -5,9 +5,13 @@ package acisum.m03uf5pracma;
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 import acisum.m03uf5pracma.Utils.Utils;
+import java.io.File;
 import java.net.URL;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import model.FileUtils;
 import model.Fmp3;
@@ -38,7 +43,7 @@ public class LayoutCenterController extends Controller implements Initializable 
     @FXML
     public ListView<Fmp3> lvMP3;
     @FXML
-    public TextField textSearh;
+    public TextField textSearch;
     @FXML
     public Button btnSortMP3;
     @FXML
@@ -59,23 +64,63 @@ public class LayoutCenterController extends Controller implements Initializable 
 
         if (playList != null) {
             Path path = FileUtils.getMP3Fromfile();
+            File file = path.toFile();
             
+            if(file !=null){
                 String root = Utils.normalizeURLFormat(path.toString());
-                String fileName = Utils.getFileName(root);
+                String fileName = file.getName();
                 Fmp3 fmp3 = new Fmp3(fileName, "", "", root);
 
                 elements.add(fmp3);
+                if (playList.getNombreLista().toLowerCase().contains(this.textSearch.getText().toLowerCase())) {
+                    this.filtroListas.add(fmp3);
+                }
                 lvMP3.refresh();
-            
+            }
         }
         
 
+    }
+    
+    @FXML
+    public void onActionBtnDelete(ActionEvent event){
+        if(playList != null){
+            int posicioElementSeleccionat = lvMP3.getSelectionModel().getSelectedIndex();
+            if (posicioElementSeleccionat > -1){
+                elements.remove(posicioElementSeleccionat);
+                filtroListas.remove(posicioElementSeleccionat);
+                lvMP3.refresh();
+               
+            }
+        }
+    }
+    
+    @FXML
+    private void filtrarNombre(KeyEvent event) {
+
+        String filtroNombre = this.textSearch.getText();
+
+        // Si el texto del nombre esta vacio, seteamos la tabla de personas con el original
+        if (filtroNombre.isEmpty()) {
+            this.lvMP3.setItems(elements);
+        } else {
+
+            // Limpio la lista
+            this.filtroListas.clear();
+
+            for (Fmp3 n : this.elements) {
+                if (n.getTitle().toLowerCase().contains(filtroNombre.toLowerCase())) {
+                    this.filtroListas.add(n);
+                }
+            }
+            this.lvMP3.setItems(filtroListas);
+        }
     }
 
     public void setPlayList(PlayList playList) {
         this.playList = playList;
         labListTitle.setText(this.playList.getNombreLista());
-        elements = FXCollections.observableArrayList(this.playList.getPlayList());
+        elements = this.playList.getPlayList();
         lvMP3.setItems(elements);
     }
 
@@ -107,8 +152,8 @@ public class LayoutCenterController extends Controller implements Initializable 
         return lvMP3;
     }
 
-    public TextField getTextSearh() {
-        return textSearh;
+    public TextField getTextSearch() {
+        return textSearch;
     }
 
     public Button getBtnSortMP3() {
