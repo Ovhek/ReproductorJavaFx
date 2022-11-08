@@ -1,6 +1,8 @@
 package acisum.m03uf5pracma;
 
 import acisum.m03uf5pracma.Utils.Utils;
+import com.sun.javafx.scene.input.TouchPointHelper;
+import java.lang.invoke.MethodHandles;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -22,10 +24,13 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import model.Fmp3;
 import org.controlsfx.glyphfont.FontAwesome;
 import org.controlsfx.glyphfont.Glyph;
 
 public class LayoutBottomController extends Controller implements Initializable {
+
+    private Fmp3 sonido_seleccionado;
 
     @FXML
     Glyph muteUnMuteGlyph;
@@ -80,42 +85,76 @@ public class LayoutBottomController extends Controller implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        media = new Media(Utils.getMp3Path(this, "01"));
-        mediaPlayer = new MediaPlayer(media);
-
-        mediaPlayer.currentTimeProperty().addListener((ov, oldVal, newVal) -> {
-            playerTimeChanged(ov, oldVal, newVal);
-            if (mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds() >= 0) {
-                //nextSong();
-            }
-        });
-
-        mediaPlayer.setOnReady(new Runnable() {
-            @Override
-            public void run() {
-                sliderMax = (int) mediaPlayer.getTotalDuration().toSeconds();
-                asignProgressTosSlider(playerSliderSlider, playerSliderProgress, sliderMin, sliderMax, sliderMinWidth, sliderMaxWidh);
-            }
-        });
-        asignProgressTosSlider(playerVolumeSlider, playerVolumeProgress, sliderMin, sliderMax, sliderMinWidth, sliderMaxWidh);
-        playerSliderSlider.setOnMousePressed((event) -> {
-            playerTimePressed(event);
-        });
-        playerSliderSlider.setOnMouseDragged((event) -> {
-            playerTimeDragged(event);
-        });
-
+            
+    }
+    
+   public boolean nextSong = false;
+    public void initMediaPlayer(){
+        if(mediaPlayer != null)
+            reset();
+        
+        if(!nextSong)
+            getSoundOfControllerCenter();
+        else
+            mediaPlayer.play();
+        
+        mediaPlayer = Utils.getMediaPlayer(sonido_seleccionado.getPath());
+        init();
+    }
+    private void reset(){
+        if(!nextSong)
+            mediaPlayer.stop();
+        
+        mediaPlayer.seek(Duration.ZERO);
+        currentVol = mediaPlayer.getVolume() * 100;
+        playPauseGlyph.setIcon("PLAY");
         playerVolumeSlider.setValue(mediaPlayer.getVolume() * 100);
+        playing = false;
+    }
+    public void init(){
+         if (mediaPlayer != null) {
 
-        playerVolumeSlider.setOnMousePressed((event) -> {
-            setVolume();
-        });
-        playerVolumeSlider.setOnMouseDragged((event) -> {
-            setVolume();
-        });
+            mediaPlayer.currentTimeProperty().addListener((ov, oldVal, newVal) -> {
+                playerTimeChanged(ov, oldVal, newVal);
+                if (mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds() <= 1) {
+                    nextSong();
+                }
+            });
+
+            mediaPlayer.setOnReady(new Runnable() {
+                @Override
+                public void run() {
+                    sliderMax = (int) mediaPlayer.getTotalDuration().toSeconds();
+                    asignProgressTosSlider(playerSliderSlider, playerSliderProgress, sliderMin, sliderMax, sliderMinWidth, sliderMaxWidh);
+                    asignProgressTosSlider(playerVolumeSlider, playerVolumeProgress, sliderMin, sliderMax, sliderMinWidth, sliderMaxWidh);
+                    playerSliderSlider.setOnMousePressed((event) -> {
+                        playerTimePressed(event);
+                    });
+                    playerSliderSlider.setOnMouseDragged((event) -> {
+                        playerTimeDragged(event);
+                    });
+
+                    playerVolumeSlider.setValue(mediaPlayer.getVolume() * 100);
+
+                    playerVolumeSlider.setOnMousePressed((event) -> {
+                        setVolume();
+                    });
+                    playerVolumeSlider.setOnMouseDragged((event) -> {
+                        setVolume();
+                    });
+                }
+            });
+        }
     }
 
+    private void nextSong(){
+        reset();
+        mediaPlayer.stop();
+        int nextPosition = ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getLvMP3().getSelectionModel().getSelectedIndex()+1;
+        if(nextPosition <= ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getElements().size())
+            sonido_seleccionado = ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getElements().get(nextPosition);
+        initMediaPlayer();
+    }
     private void setVolume() {
         if (mediaPlayer != null) {
             mediaPlayer.setVolume(playerVolumeSlider.getValue() / 100);
@@ -168,12 +207,14 @@ public class LayoutBottomController extends Controller implements Initializable 
 
     @FXML
     void actionPlayerBackward(ActionEvent event) {
-        mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.seconds(FORWARD_BACKWARD_SECONDS)));
+        if(mediaPlayer != null){
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.seconds(FORWARD_BACKWARD_SECONDS)));}
     }
 
     @FXML
     void actionPlayerForward(ActionEvent event) {
-        mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(FORWARD_BACKWARD_SECONDS)));
+        if(mediaPlayer != null){
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(FORWARD_BACKWARD_SECONDS)));}
     }
 
     private boolean mute = false;
@@ -181,6 +222,8 @@ public class LayoutBottomController extends Controller implements Initializable 
 
     @FXML
     void actionPlayerMuteUnMute(ActionEvent event) {
+        
+        if(mediaPlayer != null){
         if (mute) {
             muteUnMuteGlyph.setIcon("");
             mediaPlayer.setVolume(currentVol / 100);
@@ -191,7 +234,7 @@ public class LayoutBottomController extends Controller implements Initializable 
             playerVolumeSlider.setValue(0);
             muteUnMuteGlyph.setIcon("");
         }
-        mute = !mute;
+        mute = !mute;}
     }
 
     private Timer timer;
@@ -200,14 +243,30 @@ public class LayoutBottomController extends Controller implements Initializable 
 
     @FXML
     void actionPlayerPlayPause(ActionEvent event) {
-        if (playing) {
-            mediaPlayer.pause();
-            playPauseGlyph.setIcon("PLAY");
-        } else {
-            mediaPlayer.play();
-            playPauseGlyph.setIcon("PAUSE");
+            if (playing) {
+                mediaPlayer.pause();
+                playPauseGlyph.setIcon("PLAY");
+            } else {
+                mediaPlayer.play();
+                playPauseGlyph.setIcon("PAUSE");
+            }
+            playing = !playing;
+    }
+
+    private void getSoundOfControllerCenter() {
+
+        int position = ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getLvMP3().getSelectionModel().getSelectedIndex();
+        if (position > -1) {
+            sonido_seleccionado = ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getElements().get(position);
         }
-        playing = !playing;
+    }
+
+    public Fmp3 getSonido_seleccionado() {
+        return sonido_seleccionado;
+    }
+
+    public void setSonido_seleccionado(Fmp3 sonido_seleccionado) {
+        this.sonido_seleccionado = sonido_seleccionado;
     }
 
     private void nextMedia() {
@@ -221,10 +280,13 @@ public class LayoutBottomController extends Controller implements Initializable 
 
     @FXML
     void actionPlayerStop(ActionEvent event) {
-        mediaPlayer.stop();
-        playing = false;
-        playPauseGlyph.setIcon("PLAY");
-        mediaPlayer.seek(Duration.ZERO);
+
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            playing = false;
+            playPauseGlyph.setIcon("PLAY");
+            mediaPlayer.seek(Duration.ZERO);
+        }
     }
 
     @FXML

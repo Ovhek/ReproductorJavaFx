@@ -5,6 +5,7 @@ package acisum.m03uf5pracma;
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 
+import acisum.m03uf5pracma.Utils.Utils;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -54,29 +55,19 @@ public class LayoutTopController extends Controller implements Initializable {
         // TODO
         
     }
+   
+
+    public ResourceBundle appBundle = Utils.getappBundle(Languages.ENGLISH);
     /**
      * Función que aplica un lenguaje en concreto dependiendo del especificado.
      * @param lang Enum del Lenguaje.
     */
     private void applyLanguage(Languages lang){
-        Locale locale = null;
-        switch (lang) {
-            case ENGLISH:
-                locale = new Locale("en");
-                break;
-            case SPANISH:
-                locale = new Locale("es");
-                break;
-            case CATALAN:
-                locale = new Locale("ca");
-                break;
-            default:
-                throw new AssertionError();
-        }
-        ResourceBundle appBundle = ResourceBundle.getBundle("bundles.LangBundle", locale);      
+        appBundle = Utils.getappBundle(lang);
         changeControllersText(appBundle);
     }
     
+        
     /**
      * Función que cambia el texto de los controles.
      * @param appBundle Bundle de recursos con el idioma.
@@ -86,10 +77,8 @@ public class LayoutTopController extends Controller implements Initializable {
         //Left      --> txt_iv_playlist
         
         LayoutLeftController layout_left = (LayoutLeftController)controllers.get("LayoutLeftController");
-        LayoutCenterController layout_center = (LayoutCenterController)controllers.get("LayoutCenterController");
         
         layout_left.txt_iv_playlist.setText(appBundle.getString("txt_list_playlist"));
-        //layout_center.labListTitle.setText(appBundle.getString("txt_mp3_title"));
         
         menu_top_import.setText(appBundle.getString("txt_import"));
         menu_top_export.setText(appBundle.getString("txt_export"));

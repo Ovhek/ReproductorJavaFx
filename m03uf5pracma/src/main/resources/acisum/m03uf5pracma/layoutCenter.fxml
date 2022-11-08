@@ -16,7 +16,7 @@
          <children>
             <ToolBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="toolbarStyle">
               <items>
-                  <Label fx:id="labListTitle" styleClass="labelStyle" text="MP3 Title" />
+                  <Label fx:id="labListTitle" styleClass="labelStyle" text="" />
                   <TextField fx:id="textSearch" onKeyReleased="#filtrarNombre" styleClass="textfield" />
                   <Button fx:id="btnSortMP3" focusTraversable="false" mnemonicParsing="false" styleClass="buttonStyle">
                      <graphic>
