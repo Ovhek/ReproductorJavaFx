@@ -89,7 +89,7 @@ public class LayoutTopController extends Controller implements Initializable {
         LayoutCenterController layout_center = (LayoutCenterController)controllers.get("LayoutCenterController");
         
         layout_left.txt_iv_playlist.setText(appBundle.getString("txt_list_playlist"));
-        layout_center.labListTitle.setText(appBundle.getString("txt_mp3_title"));
+        //layout_center.labListTitle.setText(appBundle.getString("txt_mp3_title"));
         
         menu_top_import.setText(appBundle.getString("txt_import"));
         menu_top_export.setText(appBundle.getString("txt_export"));
