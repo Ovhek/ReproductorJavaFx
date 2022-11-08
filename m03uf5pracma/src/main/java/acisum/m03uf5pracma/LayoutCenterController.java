@@ -65,9 +65,10 @@ public class LayoutCenterController extends Controller implements Initializable 
         if (playList != null) {
             Path path = FileUtils.getMP3Fromfile();
             File file = path.toFile();
-            
-            if(file !=null){
-                String root = Utils.normalizeURLFormat(path.toString());
+
+            if (file != null) {
+                String root = Utils.normalizeURLFormat(path.toString()).replace("\\", "/");
+                
                 String fileName = file.getName();
                 Fmp3 fmp3 = new Fmp3(fileName, "", "", root);
 
@@ -78,23 +79,25 @@ public class LayoutCenterController extends Controller implements Initializable 
                 lvMP3.refresh();
             }
         }
-        
 
     }
-    
+
     @FXML
-    public void onActionBtnDelete(ActionEvent event){
-        if(playList != null){
+    public void onActionBtnDelete(ActionEvent event) {
+        if (playList != null) {
             int posicioElementSeleccionat = lvMP3.getSelectionModel().getSelectedIndex();
-            if (posicioElementSeleccionat > -1){
+            if (posicioElementSeleccionat > -1) {
+                if(compareFmp3CFmp3B()){
+                    ((LayoutBottomController) controllers.get(LayoutBottomController.class.getSimpleName())).setSonido_seleccionado(null);
+                }
                 elements.remove(posicioElementSeleccionat);
                 filtroListas.remove(posicioElementSeleccionat);
                 lvMP3.refresh();
-               
+
             }
         }
     }
-    
+
     @FXML
     private void filtrarNombre(KeyEvent event) {
 
@@ -115,6 +118,19 @@ public class LayoutCenterController extends Controller implements Initializable 
             }
             this.lvMP3.setItems(filtroListas);
         }
+    }
+
+    private boolean compareFmp3CFmp3B() {
+        boolean same_sound = false;
+        int position = lvMP3.getSelectionModel().getSelectedIndex();
+        if (position > -1) {
+            Fmp3 sound_b = ((LayoutBottomController) controllers.get(LayoutBottomController.class.getSimpleName())).getSonido_seleccionado();
+            if (sound_b.equals(elements.get(position))) {
+                same_sound = true;
+            }
+        }
+
+        return same_sound;
     }
 
     public void setPlayList(PlayList playList) {
