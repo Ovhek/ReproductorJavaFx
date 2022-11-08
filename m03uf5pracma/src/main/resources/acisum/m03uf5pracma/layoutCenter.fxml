@@ -17,18 +17,18 @@
             <ToolBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="toolbarStyle">
               <items>
                   <Label fx:id="labListTitle" styleClass="labelStyle" text="MP3 Title" />
-                  <TextField fx:id="textfSearch" styleClass="textfield" />
+                  <TextField fx:id="textSearch" onKeyReleased="#filtrarNombre" styleClass="textfield" />
                   <Button fx:id="btnSortMP3" focusTraversable="false" mnemonicParsing="false" styleClass="buttonStyle">
                      <graphic>
                         <Glyph fx:id="sortIcon" fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnDeleteMP3" focusTraversable="false" mnemonicParsing="false" styleClass="buttonStyle">
+                  <Button fx:id="btnDeleteMP3" focusTraversable="false" mnemonicParsing="false" onAction="#onActionBtnDelete" styleClass="buttonStyle">
                      <graphic>
                         <Glyph fx:id="deleteIcon" fontFamily="FontAwesome" icon="TRASH" styleClass="glyphStyle" />
                      </graphic>
                   </Button>
-                <Button fx:id="btnAddMP3" focusTraversable="false" mnemonicParsing="false" styleClass="buttonStyle">
+                <Button fx:id="btnAddMP3" focusTraversable="false" mnemonicParsing="false" onAction="#onActionBtnAdd" styleClass="buttonStyle">
                      <graphic>
                         <Glyph fx:id="addIcon" fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                      </graphic>
