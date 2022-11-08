@@ -8,6 +8,7 @@ import acisum.m03uf5pracma.Utils.Utils;
 import java.io.File;
 import java.net.URL;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -64,7 +65,8 @@ public class LayoutCenterController extends Controller implements Initializable 
             @Override
             public void handle(MouseEvent event) {
                 LayoutBottomController layout_bottom = (LayoutBottomController)(controllers.get("LayoutBottomController"));
-                layout_bottom.initMediaPlayer(lvMP3.getSelectionModel().getSelectedItem().toString());
+                layout_bottom.nextSong = false;
+                layout_bottom.initMediaPlayer();
             }
         });
     }
@@ -77,7 +79,7 @@ public class LayoutCenterController extends Controller implements Initializable 
             File file = path.toFile();
             
             if(file !=null){
-                String root = Utils.normalizeURLFormat(path.toString());
+                String root = file.toURI().toString();
                 String fileName = file.getName();
                 Fmp3 fmp3 = new Fmp3(fileName, "", "", root);
 

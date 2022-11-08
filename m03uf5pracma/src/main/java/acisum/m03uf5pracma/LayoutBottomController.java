@@ -1,6 +1,8 @@
 package acisum.m03uf5pracma;
 
 import acisum.m03uf5pracma.Utils.Utils;
+import com.sun.javafx.scene.input.TouchPointHelper;
+import java.lang.invoke.MethodHandles;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -85,17 +87,37 @@ public class LayoutBottomController extends Controller implements Initializable 
     public void initialize(URL url, ResourceBundle rb) {
             
     }
-    public void initMediaPlayer(String mp3Path){
-        mediaPlayer = Utils.getMediaPlayer(Utils.getMp3Path(this, mp3Path));
+    
+   public boolean nextSong = false;
+    public void initMediaPlayer(){
+        if(mediaPlayer != null)
+            reset();
         
+        if(!nextSong)
+            getSoundOfControllerCenter();
+        else
+            mediaPlayer.play();
+        
+        mediaPlayer = Utils.getMediaPlayer(sonido_seleccionado.getPath());
+        init();
+    }
+    private void reset(){
+        if(!nextSong)
+            mediaPlayer.stop();
+        
+        mediaPlayer.seek(Duration.ZERO);
+        currentVol = mediaPlayer.getVolume() * 100;
+        playPauseGlyph.setIcon("PLAY");
+        playerVolumeSlider.setValue(mediaPlayer.getVolume() * 100);
+        playing = false;
     }
     public void init(){
          if (mediaPlayer != null) {
 
             mediaPlayer.currentTimeProperty().addListener((ov, oldVal, newVal) -> {
                 playerTimeChanged(ov, oldVal, newVal);
-                if (mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds() >= 0) {
-                    //nextSong();
+                if (mediaPlayer.getTotalDuration().toSeconds() - mediaPlayer.getCurrentTime().toSeconds() <= 1) {
+                    nextSong();
                 }
             });
 
@@ -125,6 +147,14 @@ public class LayoutBottomController extends Controller implements Initializable 
         }
     }
 
+    private void nextSong(){
+        reset();
+        mediaPlayer.stop();
+        int nextPosition = ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getLvMP3().getSelectionModel().getSelectedIndex()+1;
+        if(nextPosition <= ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getElements().size())
+            sonido_seleccionado = ((LayoutCenterController) controllers.get(LayoutCenterController.class.getSimpleName())).getElements().get(nextPosition);
+        initMediaPlayer();
+    }
     private void setVolume() {
         if (mediaPlayer != null) {
             mediaPlayer.setVolume(playerVolumeSlider.getValue() / 100);
@@ -211,18 +241,11 @@ public class LayoutBottomController extends Controller implements Initializable 
     private TimerTask rask;
     private boolean playing = false;
 
-    private boolean newSong = true;
     @FXML
     void actionPlayerPlayPause(ActionEvent event) {
-        
-        
-            
             if (playing) {
                 mediaPlayer.pause();
                 playPauseGlyph.setIcon("PLAY");
-                if (newSong){
-                    init();
-                }
             } else {
                 mediaPlayer.play();
                 playPauseGlyph.setIcon("PAUSE");
