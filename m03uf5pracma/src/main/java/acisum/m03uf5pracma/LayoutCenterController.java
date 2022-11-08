@@ -37,8 +37,11 @@ import model.PlayList;
  */
 public class LayoutCenterController extends Controller implements Initializable {
 
+    //Playlist
     PlayList playList;
+    //Elementos MP3
     ObservableList<Fmp3> elements = FXCollections.observableArrayList();
+    //Filtros de la lista MP3
     ObservableList<Fmp3> filtroListas = FXCollections.observableArrayList();
 
     @FXML
@@ -55,12 +58,13 @@ public class LayoutCenterController extends Controller implements Initializable 
     public Button btnAddMP3;
 
     /**
-     * Initializes the controller class.
+     * Función que inicializa la escena, añade los elementos al listview de mp3. 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lvMP3.setItems(elements);
         
+        //Al seleccionar un mp3 del listado llama a la función encargada de instanciar el mediaplayer
         lvMP3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -71,6 +75,9 @@ public class LayoutCenterController extends Controller implements Initializable 
         });
     }
 
+    /**
+     * Función encargada de añadir archivos MP3 a la Playlist.
+     */
     @FXML
     public void onActionBtnAdd(ActionEvent event) {
 
@@ -94,6 +101,9 @@ public class LayoutCenterController extends Controller implements Initializable 
 
     }
     
+    /**
+     * Función encargada de eliminar un MP3 de la playlist.
+     */
     @FXML
     public void onActionBtnDelete(ActionEvent event){
         if(playList != null){
@@ -107,6 +117,9 @@ public class LayoutCenterController extends Controller implements Initializable 
         }
     }
     
+    /**
+     * Función encargada de filtrar la playlist mediante un string.
+     */
     @FXML
     private void filtrarNombre(KeyEvent event) {
 

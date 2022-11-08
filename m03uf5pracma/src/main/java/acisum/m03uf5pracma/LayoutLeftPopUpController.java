@@ -52,6 +52,9 @@ public class LayoutLeftPopUpController implements Initializable {
 
     }
 
+    /**
+     Función encargada de guardar la playlist.
+     */
     @FXML
     private void onActionGuardar(ActionEvent event) {
 
@@ -90,6 +93,9 @@ public class LayoutLeftPopUpController implements Initializable {
         return list.stream().map(PlayList::getNombreLista).filter(name::equals).findFirst().isPresent();
     }
     
+    /*
+    * Función encargada de cerrar la ventana al cancelar el PopUp
+    **/
     @FXML
     private void onActionCancelar(ActionEvent event) {
         //ponemos el nombre a null para que nos añada nada

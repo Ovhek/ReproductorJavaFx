@@ -7,7 +7,6 @@ package acisum.m03uf5pracma;
 
 import acisum.m03uf5pracma.Utils.Utils;
 import java.net.URL;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
