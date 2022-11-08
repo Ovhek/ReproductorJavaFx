@@ -16,6 +16,9 @@ public class App extends Application {
 
     private static Scene scene;
 
+    /**
+     Función que inicia la escena main
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("main"));

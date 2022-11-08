@@ -5,8 +5,8 @@
 package acisum.m03uf5pracma;
 
 /**
- *
- * @author Cole
+ * Enum de idiomas
+ * @author Alex
  */
 public enum Languages {
     ENGLISH,

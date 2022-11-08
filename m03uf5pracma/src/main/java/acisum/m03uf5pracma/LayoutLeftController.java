@@ -68,17 +68,22 @@ public class LayoutLeftController extends Controller implements Initializable {
 
     private Languages lang = Languages.ENGLISH;
     
+    /**
+     * Función que se ejecuta al inicializar la escena. Añade los elementos al ListView.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        /*Con el setItems lo que hacemos es que los elementos que añadamos
+        /*Con el setItems lo que hacemos es que los elementos que aÃ±adamos
         se pondran directamente en nuestro listView*/
         lv_playlists.setItems(elements);
        
     }
     
 
-    
+    /**
+     * Función encargada de seleccionar la playlist y añadirla como lista actual.
+     */
     @FXML
     private void onActionBtnSelect(ActionEvent event){
         int posicioElementSeleccionat = lv_playlists.getSelectionModel().getSelectedIndex();
@@ -90,6 +95,9 @@ public class LayoutLeftController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Función que se encarga de añadir una nueva Playlist.
+     */
     @FXML
     private void onActionBtnAdd(ActionEvent event) {
 
@@ -125,6 +133,9 @@ public class LayoutLeftController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Función encargada de eliminar una playlist.
+     */
     @FXML
     private void onActionBtnEliminar(ActionEvent event) {
 
@@ -147,7 +158,9 @@ public class LayoutLeftController extends Controller implements Initializable {
     }
     
 
-    
+    /**
+     * Función encargada de filtrar las playlist mediante un searc text.
+     */
     @FXML
     private void filtrarNombre(KeyEvent event) {
 
@@ -172,7 +185,10 @@ public class LayoutLeftController extends Controller implements Initializable {
     
     
     private boolean reverseSort = false;
-            
+    
+    /*
+    * Función encargada de ordenar la lista alfanuemricamente.
+    **/
     @FXML
     private void onActionOrdenar(ActionEvent event){
 
@@ -190,6 +206,4 @@ public class LayoutLeftController extends Controller implements Initializable {
     public ListView<PlayList> getLv_playlists() {
         return lv_playlists;
     }
-    
-    
 }
