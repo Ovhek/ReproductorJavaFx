@@ -26,6 +26,7 @@ import model.PlayList;
  */
 public class LayoutLeftPopUpController implements Initializable {
 
+    //Creacion de varaibles y declaramos los elementos de el .fxml
     @FXML
     private TextField txt_nombre_lista;
 
@@ -49,6 +50,9 @@ public class LayoutLeftPopUpController implements Initializable {
 
     }
 
+    //cuando cliquemos en guardar recogeremos el nombre lo añadiemos a una varible de clase 
+    //playlist que pasaremos a la pantalla leftcontroller
+    //saltaran errores en case de poner nombres errononeos
     @FXML
     private void onActionGuardar(ActionEvent event) {
 
@@ -89,10 +93,12 @@ public class LayoutLeftPopUpController implements Initializable {
 
     }
 
+    
     public boolean containsName(final ObservableList<PlayList> list, final String name){
         return list.stream().map(PlayList::getNombreLista).filter(name::equals).findFirst().isPresent();
     }
     
+    //cuando pulsamos en cancelar setearemos nombre a null y cerraremos la ventana
     @FXML
     private void onActionCancelar(ActionEvent event) {
         //ponemos el nombre a null para que nos añada nada
@@ -102,6 +108,7 @@ public class LayoutLeftPopUpController implements Initializable {
         stage.close();
     }
 
+    //getter y setter de nombre(finalmente en nuestro caso setter se podria eliminar ya que no lo usariamos)
     public PlayList getNombre() {
         return nombre;
     }

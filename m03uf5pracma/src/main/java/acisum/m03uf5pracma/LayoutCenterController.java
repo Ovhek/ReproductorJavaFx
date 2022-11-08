@@ -36,10 +36,13 @@ import model.PlayList;
  */
 public class LayoutCenterController extends Controller implements Initializable {
 
+    // Creacion de observable list(Actuan a modo de arrayList pero en javaFx)
+    //Se asignan de clase playlist para trabajar con la clase y su atributos
     PlayList playList;
     ObservableList<Fmp3> elements = FXCollections.observableArrayList();
     ObservableList<Fmp3> filtroListas = FXCollections.observableArrayList();
 
+    //Creacion de varaibles y declaramos los elementos de el .fxml
     @FXML
     public Label labListTitle;
     @FXML
@@ -61,13 +64,16 @@ public class LayoutCenterController extends Controller implements Initializable 
         lvMP3.setItems(elements);
     }
 
+    //cuando cliquemos en add se nos abrira el explorador de archivos para poder 
+    //agregar canciones
     @FXML
     public void onActionBtnAdd(ActionEvent event) {
 
+        //sacamos el path y abrimos el explorador de archivos
         if (playList != null) {
             Path path = FileUtils.getMP3Fromfile();
             File file = path.toFile();
-
+            //creamos iterator que comprobara si el fichero introducio existe para impedir añadirlo
             if (file != null) {
                 String root = Utils.normalizeURLFormat(path.toString());
                 String fileName = file.getName();
@@ -77,6 +83,7 @@ public class LayoutCenterController extends Controller implements Initializable 
                 
                 Iterator<Fmp3> comprobarNombre = elements.iterator();
                 
+                //comprobamos si existe el archivo en nuestra lista
                 while (comprobarNombre.hasNext()){
                     if(comprobarNombre.next().toString().equals(fileName)){
                         igual = true;
@@ -85,8 +92,13 @@ public class LayoutCenterController extends Controller implements Initializable 
                         igual = false;
                     }
                 }
+                
+                //si esta repetido no lo metemos y salta un alert
+                //de lo contraio lo añadimos
                 if (!igual) {
-
+                    
+                    //comprobamos extension y si no es mp3 salta alert
+                    //de lo contrario lo añadimos
                     if (extension.equals("mp3")) {
                         elements.add(fmp3);
                         if (playList.getNombreLista().toLowerCase().contains(this.textSearch.getText().toLowerCase())) {
@@ -113,6 +125,7 @@ public class LayoutCenterController extends Controller implements Initializable 
 
     }
 
+    //cuando clicamos en btn delete cogemos la posicion y la eliminamos de la lista y actualizamos
     @FXML
     public void onActionBtnDelete(ActionEvent event) {
         if (playList != null) {
@@ -126,6 +139,7 @@ public class LayoutCenterController extends Controller implements Initializable 
         }
     }
 
+    //cuando escribimos en la barra de busqueda se nos actualizara automaticamente la lista mientras escribimos
     @FXML
     private void filtrarNombre(KeyEvent event) {
 
@@ -148,6 +162,7 @@ public class LayoutCenterController extends Controller implements Initializable 
         }
     }
 
+    //declaramos setter sobre variable de tipo playlist
     public void setPlayList(PlayList playList) {
         this.playList = playList;
         labListTitle.setText(this.playList.getNombreLista());
@@ -155,6 +170,7 @@ public class LayoutCenterController extends Controller implements Initializable 
         lvMP3.setItems(elements);
     }
 
+    //declaramos funcion borrar lista que limpia un label, elimina una playlist, limpia elements y el listview
     public void borrarLista() {
 
         labListTitle.setText("List Title");
@@ -163,6 +179,7 @@ public class LayoutCenterController extends Controller implements Initializable 
         lvMP3.setItems(elements);
     }
 
+    //getters
     public PlayList getPlayList() {
         return playList;
     }
