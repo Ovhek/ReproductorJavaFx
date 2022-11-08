@@ -40,7 +40,7 @@
                      <items>
                         <Button fx:id="btn_add_playlist" contentDisplay="CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#onActionBtnAdd" styleClass="buttonStyle">
                            <graphic>
-                              <Glyph fontFamily="FontAwesome" icon="FOLDER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="glyphStyle" />
+                              <Glyph fontFamily="FontAwesome" text="+" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="glyphStyle" />
                            </graphic>
                         </Button>
                         <Button fx:id="btn_delete_playlist" focusTraversable="false" mnemonicParsing="false" onAction="#onActionBtnEliminar" styleClass="buttonStyle">
@@ -51,6 +51,11 @@
                         <Button fx:id="btn_filter_playlist" contentDisplay="CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#onActionOrdenar" styleClass="buttonStyle">
                            <graphic>
                               <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_select_playlist" mnemonicParsing="false" onAction="#onActionBtnSelect">
+                            <graphic>
+                              <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                            </graphic>
                         </Button>
                      </items>

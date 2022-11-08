@@ -67,6 +67,23 @@ public class LayoutLeftController extends Controller implements Initializable {
         /*Con el setItems lo que hacemos es que los elementos que añadamos
         se pondran directamente en nuestro listView*/
         lv_playlists.setItems(elements);
+       
+    }
+    
+    private void actualizarPlayList(){
+        PlayList p = ((LayoutCenterController)controllers.get(LayoutCenterController.class.getSimpleName())).getPlayList();
+        
+    }
+    
+    @FXML
+    private void onActionBtnSelect(ActionEvent event){
+        int posicioElementSeleccionat = lv_playlists.getSelectionModel().getSelectedIndex();
+        
+        if (posicioElementSeleccionat > -1){
+            PlayList p = elements.get(posicioElementSeleccionat);
+            
+            ((LayoutCenterController)controllers.get(LayoutCenterController.class.getSimpleName())).setPlayList(p);
+        }
     }
 
     @FXML
@@ -112,10 +129,17 @@ public class LayoutLeftController extends Controller implements Initializable {
         //que corresponde a la posicion mencionada, 
         // Puede que sea -1 en caso de no seleccionar posicion
         if (posicioElementSeleccionat > -1) {
+            PlayList p = elements.get(posicioElementSeleccionat);
+            String nombre = p.getNombreLista();
+            String nombreCL =  ((LayoutCenterController)controllers.get(LayoutCenterController.class.getSimpleName())).getLabListTitle().getText();
+            if(nombre.equals(nombreCL)){
+                 ((LayoutCenterController)controllers.get(LayoutCenterController.class.getSimpleName())).borrarLista();
+            }
             elements.remove(posicioElementSeleccionat);
             filtroListas.remove(posicioElementSeleccionat);
         }
     }
+    
 
     
     @FXML
@@ -139,6 +163,8 @@ public class LayoutLeftController extends Controller implements Initializable {
             this.lv_playlists.setItems(filtroListas);
         }
     }
+    
+    
     
     @FXML
     private void onActionOrdenar(ActionEvent event){
