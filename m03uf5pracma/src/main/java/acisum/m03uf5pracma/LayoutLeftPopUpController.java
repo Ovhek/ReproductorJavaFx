@@ -5,7 +5,9 @@ package acisum.m03uf5pracma;
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Fmp3;
 import model.PlayList;
 
 /**
@@ -50,8 +53,8 @@ public class LayoutLeftPopUpController implements Initializable {
     private void onActionGuardar(ActionEvent event) {
 
         String nombreLista = txt_nombre_lista.getText();
-
-        PlayList n = new PlayList(nombreLista);
+        ObservableList<Fmp3> tl = FXCollections.observableArrayList();
+        PlayList n = new PlayList(nombreLista,tl);
 
         if (txt_nombre_lista.getText().isBlank()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -66,11 +69,11 @@ public class LayoutLeftPopUpController implements Initializable {
 
                 this.nombre = n;
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               /* Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText(null);
                 alert.setTitle("Informacion");
                 alert.setContentText("Se ha añadido correctamente");
-                alert.showAndWait();
+                alert.showAndWait();*/
 
                 // Cerrar ventana
                 Stage stage = (Stage) this.btn_guardar.getScene().getWindow();
