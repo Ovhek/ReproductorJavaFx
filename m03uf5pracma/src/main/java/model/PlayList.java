@@ -6,18 +6,24 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author joseb
  */
 public class PlayList {
-    private ArrayList<ListMP3> playList;
+    private ObservableList<Fmp3>  playList;
     private String nombreLista;
     
     //Constructores
 
-    public PlayList(ArrayList<ListMP3> playList) {
+    public PlayList(ObservableList<Fmp3> playList) {
+        this.playList = playList;
+    }
+    
+    public PlayList(String nombreLista, ObservableList<Fmp3> playList){
+        this.nombreLista = nombreLista;
         this.playList = playList;
     }
 
@@ -40,9 +46,16 @@ public class PlayList {
     }
 
     //Gets and Setters
-    public ArrayList<ListMP3> getPlayList() {
+    public ObservableList<Fmp3> getPlayList() {
         return playList;
     }
+
+    public void setPlayList(ObservableList<Fmp3> playList) {
+        this.playList = playList;
+    }
+    
+    
+    
 
     @Override
     public int hashCode() {
