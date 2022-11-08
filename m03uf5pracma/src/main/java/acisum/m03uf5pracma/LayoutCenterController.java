@@ -10,6 +10,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -65,36 +67,65 @@ public class LayoutCenterController extends Controller implements Initializable 
         if (playList != null) {
             Path path = FileUtils.getMP3Fromfile();
             File file = path.toFile();
-            
-            if(file !=null){
+
+            if (file != null) {
                 String root = Utils.normalizeURLFormat(path.toString());
                 String fileName = file.getName();
                 Fmp3 fmp3 = new Fmp3(fileName, "", "", root);
-
-                elements.add(fmp3);
-                if (playList.getNombreLista().toLowerCase().contains(this.textSearch.getText().toLowerCase())) {
-                    this.filtroListas.add(fmp3);
+                String extension = fileName.split("\\.")[1];
+                boolean igual = false;
+                
+                Iterator<Fmp3> comprobarNombre = elements.iterator();
+                
+                while (comprobarNombre.hasNext()){
+                    if(comprobarNombre.next().toString().equals(fileName)){
+                        igual = true;
+                        break;
+                    } else {
+                        igual = false;
+                    }
                 }
-                lvMP3.refresh();
+                if (!igual) {
+
+                    if (extension.equals("mp3")) {
+                        elements.add(fmp3);
+                        if (playList.getNombreLista().toLowerCase().contains(this.textSearch.getText().toLowerCase())) {
+                            this.filtroListas.add(fmp3);
+                        }
+                        lvMP3.refresh();
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText(null);
+                        alert.setTitle("Error");
+                        alert.setContentText("La extension de el fichero es incorrecta");
+                        alert.showAndWait();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setTitle("Error");
+                    alert.setContentText("El fichero ya esta en esta lista, prueba con otro!");
+                    alert.showAndWait();
+
+                }
             }
         }
-        
 
     }
-    
+
     @FXML
-    public void onActionBtnDelete(ActionEvent event){
-        if(playList != null){
+    public void onActionBtnDelete(ActionEvent event) {
+        if (playList != null) {
             int posicioElementSeleccionat = lvMP3.getSelectionModel().getSelectedIndex();
-            if (posicioElementSeleccionat > -1){
+            if (posicioElementSeleccionat > -1) {
                 elements.remove(posicioElementSeleccionat);
                 filtroListas.remove(posicioElementSeleccionat);
                 lvMP3.refresh();
-               
+
             }
         }
     }
-    
+
     @FXML
     private void filtrarNombre(KeyEvent event) {
 
