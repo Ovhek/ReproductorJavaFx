@@ -6,6 +6,7 @@ package acisum.m03uf5pracma;
  */
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,10 +71,7 @@ public class LayoutLeftController extends Controller implements Initializable {
        
     }
     
-    private void actualizarPlayList(){
-        PlayList p = ((LayoutCenterController)controllers.get(LayoutCenterController.class.getSimpleName())).getPlayList();
-        
-    }
+
     
     @FXML
     private void onActionBtnSelect(ActionEvent event){
@@ -170,4 +168,10 @@ public class LayoutLeftController extends Controller implements Initializable {
     private void onActionOrdenar(ActionEvent event){
         
     }
+
+    public ListView<PlayList> getLv_playlists() {
+        return lv_playlists;
+    }
+    
+    
 }
