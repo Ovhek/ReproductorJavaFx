@@ -53,7 +53,7 @@
                               <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                            </graphic>
                         </Button>
-                        <Button fx:id="btn_select_playlist" mnemonicParsing="false" onAction="#onActionBtnSelect">
+                        <Button fx:id="btn_select_playlist" mnemonicParsing="false" onAction="#onActionBtnSelect" styleClass="buttonStyle">
                             <graphic>
                               <Glyph fontFamily="FontAwesome" styleClass="glyphStyle" text="" />
                            </graphic>
