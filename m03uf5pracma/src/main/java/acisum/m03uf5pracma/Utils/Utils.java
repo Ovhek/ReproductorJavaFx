@@ -4,6 +4,9 @@
  */
 package acisum.m03uf5pracma.Utils;
 
+import acisum.m03uf5pracma.Languages;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
@@ -36,8 +39,26 @@ public abstract class Utils {
     
     public static String getMp3Path(Object instance, String songName)
     {
-        return instance.getClass().getClassLoader().getResource("sounds/"+songName+".mp3").toString();
+        return instance.getClass().getClassLoader().getResource("sounds/"+songName).toString();
     }
     
+    public static ResourceBundle getappBundle (Languages lang){
+        Locale locale = null;
+        switch (lang) {
+            case ENGLISH:
+                locale = new Locale("en");
+                break;
+            case SPANISH:
+                locale = new Locale("es");
+                break;
+            case CATALAN:
+                locale = new Locale("ca");
+                break;
+            default:
+                throw new AssertionError();
+        }
+        return ResourceBundle.getBundle("bundles.LangBundle", locale); 
+        
+    }
     
 }

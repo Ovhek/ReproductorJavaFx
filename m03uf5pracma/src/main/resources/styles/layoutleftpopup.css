@@ -2,6 +2,21 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
+.root {
+    -fx-background-color: #121212;
+}
 
+.button{
+    -fx-background-color : #DBDBDB;
+    -fx-background-radius: 20px;
+    -fx-padding:10px;
+}
+
+.button:hover{
+    -fx-background-color: #9D8DF1;
+    -fx-cursor:hand;
+}
+
+.button:hover > .glyphStyle{
+    -fx-text-fill: white;
 }
