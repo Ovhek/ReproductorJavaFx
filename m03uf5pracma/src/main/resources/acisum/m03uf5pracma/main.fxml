@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.MainController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="layoutMain" maxHeight="-Infinity" minHeight="300.0" minWidth="300.0" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="acisum.m03uf5pracma.MainController">
    <top>
-      <fx:include fx:id="layoutTop" source="layoutTop.fxml" BorderPane.alignment="TOP_LEFT" />
-      <fx:include fx:id="layoutTop" prefHeight="0.0" prefWidth="0.0" source="layoutTop.fxml" />
+       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+           <fx:include fx:id="layoutTop" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="layoutTop.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+       </AnchorPane>
    </top>
-   <left>
-      <fx:include fx:id="layoutLeft" prefHeight="0.0" prefWidth="0.0" source="layoutLeft.fxml" />
-   </left>
    <center>
+
       <fx:include fx:id="layoutCenter" source="layoutCenter.fxml" BorderPane.alignment="CENTER" />
+
+       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="324.0" BorderPane.alignment="CENTER">
+         <VBox fx:id="responsiveVbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                 <fx:include fx:id="layoutCenter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="layoutCenter.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
+            </children>
+         </VBox>
+         <BorderPane.margin>
+            <Insets left="5.0" right="5.0" />
+         </BorderPane.margin>
+       </AnchorPane>
+
    </center>
    <bottom>
+
       <fx:include fx:id="layoutBottom" prefHeight="0.0" prefWidth="0.0" source="layoutBottom.fxml" />
+
+       <AnchorPane stylesheets="@../../styles/layout_bottom.css" BorderPane.alignment="CENTER">
+           <fx:include fx:id="layoutBottom" source="layoutBottom.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+       </AnchorPane>
+
    </bottom>
+   <left>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../../styles/main.css" BorderPane.alignment="CENTER">
+          <fx:include fx:id="layoutLeft" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="layoutLeft.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         <BorderPane.margin>
+            <Insets left="5.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </left>
 </BorderPane>

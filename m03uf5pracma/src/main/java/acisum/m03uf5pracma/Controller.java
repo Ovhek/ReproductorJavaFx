@@ -8,9 +8,15 @@ import java.util.HashMap;
 
 /**
  *
- * @author Cole
+ * @author Alexandru
  */
+//Singleton
 public class Controller {
+    //private static Controller instance = null;
+   
+    /*public static synchronized Controller getInstance(){
+        return (instance == null) ? new Controller() : instance;
+    }*/
     HashMap<String, Object> controllers;
 
     public HashMap<String, Object> getControllers() {

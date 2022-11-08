@@ -1,15 +1,29 @@
 package acisum.m03uf5pracma;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 public class MainController extends Controller implements Initializable {
 
+    @FXML
+    BorderPane layoutMain;
+    @FXML
+    VBox responsiveVbox;
+    @FXML
+    AnchorPane layoutTop;
+    @FXML
+    AnchorPane layoutBottom;
+    @FXML
+    AnchorPane layoutLeft;
+    @FXML
+    AnchorPane layoutCenter;
+    
     @FXML
     LayoutTopController layoutTopController;
     @FXML
@@ -18,10 +32,11 @@ public class MainController extends Controller implements Initializable {
     LayoutCenterController layoutCenterController;
     @FXML
     LayoutBottomController layoutBottomController;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                //inicialitzem hashmap que ha de contenir tots els controllers
+        
+        //inicialitzem hashmap que ha de contenir tots els controllers
         this.controllers = new HashMap<>();
         
         //els afegim
@@ -35,7 +50,23 @@ public class MainController extends Controller implements Initializable {
         layoutTopController.setControllers(controllers);
         layoutLeftController.setControllers(controllers);
         layoutCenterController.setControllers(controllers);
-        layoutBottomController.setControllers(controllers);}
-    
-    
+        layoutBottomController.setControllers(controllers);
+        
+        layoutMain.widthProperty().addListener((ov,oldVal, newVal) ->{
+            try{
+                if (newVal.intValue() < 600){
+                    layoutMain.setLeft(null);
+                    responsiveVbox.getChildren().add(layoutLeft);
+                }
+                else{
+                    responsiveVbox.getChildren().remove(layoutLeft);
+                    layoutMain.setLeft(layoutLeft);
+                }
+            } catch (Exception e){
+                //Este error se produce por hijos duplicados pero no afecta en si a la aplicación
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        });
+    }    
 }

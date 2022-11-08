@@ -1,7 +1,27 @@
 /*
  * Empty Stylesheet file.
  */
-
-.mainFxmlClass {
-
+.toolbarStyle {
+    -fx-background-color: #282828;
 }
+.hboxStyle .labelStyle{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.hbox .textfield{
+    -fx-background-color: #F5F5F5;
+}
+
+.toolbarStyle .buttonStyle{
+    -fx-background-color: #DBDBDB;
+}
+
+.toolbarStyle .buttonStyle:hover{
+    -fx-background-color: #9D8DF1;
+    -fx-cursor:hand;
+}
+
+.toolbarStyle .buttonStyle:hover > .glyphStyle{
+    -fx-text-fill: white;
+}
+

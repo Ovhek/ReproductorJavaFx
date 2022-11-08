@@ -7,7 +7,9 @@ package acisum.m03uf5pracma;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -16,6 +18,9 @@ import javafx.fxml.Initializable;
  */
 public class LayoutCenterController extends Controller implements Initializable {
 
+    
+    @FXML
+    public Label labListTitle;
     /**
      * Initializes the controller class.
      */
