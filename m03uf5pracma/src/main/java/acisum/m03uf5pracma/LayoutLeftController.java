@@ -4,8 +4,11 @@ package acisum.m03uf5pracma;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
+import com.sun.media.jfxmedia.track.Track;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,6 +31,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.PlayList;
+import model.PlayListComparator;
 
 /**
  * FXML Controller class
@@ -167,10 +171,20 @@ public class LayoutLeftController extends Controller implements Initializable {
     }
     
     
-    
+    private boolean reverseSort = false;
+            
     @FXML
     private void onActionOrdenar(ActionEvent event){
+
+        if (reverseSort){
+            Collections.sort(elements,Collections.reverseOrder(new PlayListComparator()));
+        }
+        else{
+            Collections.sort(elements,new PlayListComparator());
+        }
+        this.lv_playlists.setItems(elements);
         
+        reverseSort = !reverseSort;
     }
 
     public ListView<PlayList> getLv_playlists() {
