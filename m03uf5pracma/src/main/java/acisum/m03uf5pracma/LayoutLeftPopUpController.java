@@ -60,14 +60,6 @@ public class LayoutLeftPopUpController implements Initializable {
         ObservableList<Fmp3> tl = FXCollections.observableArrayList();
         PlayList n = new PlayList(nombreLista,tl);
 
-        if (txt_nombre_lista.getText().isBlank()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("No has introducido un nombre");
-            alert.showAndWait();
-        }
-
         if (!txt_nombre_lista.getText().isBlank()) {
             if (!containsName(listas,n.getNombreLista())) {
 
@@ -89,6 +81,12 @@ public class LayoutLeftPopUpController implements Initializable {
                 alert.setContentText("El nombre introducido ya existe");
                 alert.showAndWait();
             }
+        } else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("No has introducido un nombre");
+            alert.showAndWait();
         }
 
     }
